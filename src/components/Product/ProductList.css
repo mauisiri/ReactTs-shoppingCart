@@ -20,6 +20,7 @@
   width: 200px;
   padding: 16px;
   border-radius: 8px;
+  margin-bottom: 40px;
 }
 
 .product-card:hover {
@@ -60,6 +61,10 @@
 .product-price {
   color: #555;
   margin-bottom: 8px;
+}
+
+.product-stock {
+  font-weight: 600
 }
 
 .add-to-cart-button-container {

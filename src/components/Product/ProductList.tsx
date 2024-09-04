@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Product } from '../../types/Product';
 import addToCartIcon from '../../assets/icons/add-to-cart-icon.png';
-import FavouriteIcon from '../../assets/icons/favourite-icon.png';
-import FavouritedIcon from '../../assets/icons/favourited-icon.png';
+import favouriteIcon from '../../assets/icons/favourite-icon.png';
+import favouritedIcon from '../../assets/icons/favourited-icon.png';
+import noPic from '../../assets/not-available-pic.png';
 import './ProductList.css';
 
 interface ProductListProps {
@@ -38,12 +39,12 @@ const ProductList: React.FC<ProductListProps> = ({ products, addToCart }) => {
               {/* Product image with favourite icon overlay */}
               <div className="product-image-container">
                 <img
-                  src={product.images[0]?.variants['90'].formats.jpg.resolutions['1x'].url}
+                  src={product.images[0]?.variants['90'].formats.jpg.resolutions['1x'].url || noPic}
                   alt={product.name}
                   className="product-image"
                 />
                 <img
-                  src={isFavourited ? FavouritedIcon : FavouriteIcon}
+                  src={isFavourited ? favouritedIcon : favouriteIcon}
                   alt="Favourite Icon"
                   className="favourite-icon"
                   onClick={() => toggleFavourite(product.code)}
@@ -55,17 +56,19 @@ const ProductList: React.FC<ProductListProps> = ({ products, addToCart }) => {
               <p className="product-supplier">{product.supplier}</p>
               <p className="product-price">{product.prices.salesPrice.formattedValue}</p>
               {/* Add to Cart button with conditional image */}
-              <button
-                onClick={() => addToCart(product)}
-                disabled={product.stock <= 0}
-                className={`add-to-cart-button ${product.stock <= 0 ? 'disabled' : ''}`}
-              >
-                {/* Conditionally render the image only if in stock */}
-                {product.stock > 0 && (
-                  <img src={addToCartIcon} alt="Add to cart" className="add-to-cart-button-icon" />
-                )}
-                {product.stock <= 0 ? 'Out of Stock' : ''}
-              </button>
+              <div className='add-to-cart-button-container'>
+                <button
+                  onClick={() => addToCart(product)}
+                  disabled={product.stock <= 0}
+                  className={`add-to-cart-button ${product.stock <= 0 ? 'disabled' : ''}`}
+                >
+                  {/* Conditionally render the image only if in stock */}
+                  {product.stock > 0 && (
+                    <img src={addToCartIcon} alt="Add to cart" className="add-to-cart-button-icon" />
+                  )}
+                  {product.stock <= 0 ? 'Out of Stock' : ''}
+                </button>
+              </div>
             </div>
           );
         })}
