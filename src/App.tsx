@@ -1,10 +1,12 @@
 // src/App.tsx
 
 import React, { useState, useEffect } from 'react';
-import ProductList from './components/ProductList';
+import ProductList from './components/Product/ProductList';
 import Cart from './components/Cart';
-import { Product } from './types/Product'; // Import the updated Product type
+import { Product } from './types/Product';
 import { fetchProducts } from './services/productService';
+import './index.css';
+import './App.css';
 
 interface CartItem extends Product {
   quantity: number;
@@ -71,9 +73,15 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="App">
-      <ProductList products={products} addToCart={addToCart} />
-      <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
+    <div className='app-container'>
+      <div className="product-container">
+        <div className="items-container">
+          <ProductList products={products} addToCart={addToCart} />
+        </div>
+        <div className="cart-container">
+          <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
+        </div>
+      </div>
     </div>
   );
 };

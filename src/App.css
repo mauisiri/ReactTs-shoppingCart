@@ -1,0 +1,32 @@
+.app-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 4px
+}
+
+.product-container {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    padding: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+.items-container {
+    display: flex;
+    padding: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+.cart-container {
+    display: flex;
+    align-items: space-between;
+    padding: 4px;
+    border: 1px solid #ccc;
+    width: 40%;
+}
