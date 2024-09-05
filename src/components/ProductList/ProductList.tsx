@@ -15,7 +15,7 @@ interface ProductListProps {
 
 const ProductList: React.FC<ProductListProps> = ({ products, addToCart }) => {
   const [favouritedProducts, setFavouritedProducts] = useState<Set<string>>(new Set());
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null); 
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   const toggleFavourite = (productCode: string) => {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Product } from '../../types/Product';
+import bin from '../../assets/icons/bin.png';
 
 interface CartItem extends Product {
   quantity: number;
@@ -33,8 +34,13 @@ const Cart: React.FC<CartProps> = ({ cartItems, removeFromCart }) => {
                 </div>
                 <button
                   onClick={() => removeFromCart(item.code)}
+                  style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', width: 20, height: 20 }}
                 >
-                  Remove
+                  <img
+                    src={bin}
+                    alt="Delete"
+                    style={{ width: 20, height: 20 }}
+                  />
                 </button>
               </div>
             ))}
