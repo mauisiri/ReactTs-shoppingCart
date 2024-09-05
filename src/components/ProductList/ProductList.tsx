@@ -15,8 +15,8 @@ interface ProductListProps {
 
 const ProductList: React.FC<ProductListProps> = ({ products, addToCart }) => {
   const [favouritedProducts, setFavouritedProducts] = useState<Set<string>>(new Set());
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null); // State to manage selected product for popup
-  const [isPopupVisible, setIsPopupVisible] = useState(false); // State to manage popup visibility
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   const toggleFavourite = (productCode: string) => {
     setFavouritedProducts((prevFavourites) => {
@@ -42,7 +42,6 @@ const ProductList: React.FC<ProductListProps> = ({ products, addToCart }) => {
 
   return (
     <div className="productList-container">
-      <h1>Product List</h1>
       <div className="productList-view">
         {products.map((product) => {
           const isFavourited = favouritedProducts.has(product.code);
@@ -65,7 +64,7 @@ const ProductList: React.FC<ProductListProps> = ({ products, addToCart }) => {
                   alt="Favourite Icon"
                   className="favourite-icon"
                   onClick={(e) => {
-                    e.stopPropagation(); // Prevents popup from opening when clicking on the favourite icon
+                    e.stopPropagation();
                     toggleFavourite(product.code);
                   }}
                 />
@@ -96,7 +95,6 @@ const ProductList: React.FC<ProductListProps> = ({ products, addToCart }) => {
         })}
       </div>
 
-      {/* Popup Component */}
       {isPopupVisible && selectedProduct && (
         <div className="popup-overlay" onClick={closePopup}>
           <div className="popup-content" onClick={(e) => e.stopPropagation()}>
@@ -108,7 +106,6 @@ const ProductList: React.FC<ProductListProps> = ({ products, addToCart }) => {
             <p>Base Price: {selectedProduct.baseprice}</p>
             <p>Stock: {selectedProduct.stock}</p>
             <p>Sales Price: {selectedProduct.prices.salesPrice.formattedValue}</p>
-            {/* Add any other details you want to show in the popup */}
             <button onClick={closePopup} className="close-popup-button">Close</button>
           </div>
         </div>

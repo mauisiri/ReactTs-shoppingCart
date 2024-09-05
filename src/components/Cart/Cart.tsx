@@ -1,7 +1,5 @@
-// src/components/Cart.tsx
-
 import React from 'react';
-import { Product } from '../types/Product';
+import { Product } from '../../types/Product';
 
 interface CartItem extends Product {
   quantity: number;
@@ -13,34 +11,42 @@ interface CartProps {
 }
 
 const Cart: React.FC<CartProps> = ({ cartItems, removeFromCart }) => {
-  // Correctly access the sales price value
   const totalCost = cartItems.reduce((total, item) => total + item.prices.salesPrice.value * item.quantity, 0);
   const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
-    <div className="p-4 mt-6 bg-gray-100 rounded shadow-md">
-      <h1 className="text-2xl font-bold mb-4">Shopping Cart</h1>
+    <div className='cart-container'>
+      <p>Added to cart</p>
       {cartItems.length === 0 ? (
-        <p className="text-gray-500">Your cart is empty</p>
+        <p style={{ color: '#a0aec0' }}>Your cart is empty</p>
       ) : (
         <>
-          <p className="font-semibold">Total Items: {totalQuantity}</p>
-          <p className="font-semibold">Total Cost: {totalCost.toFixed(2)}€</p>
-          <ul className="mt-4">
+          <ul style={{ marginTop: '16px' }}>
             {cartItems.map((item) => (
-              <li key={item.code} className="flex justify-between items-center mb-2">
+              <div>
                 <span>
-                  {item.name} x {item.quantity} = {(item.prices.salesPrice.value * item.quantity).toFixed(2)}€
+                  {item.name}
                 </span>
+                <div>
+                  <span>{item.quantity}</span>
+                  <span>{(item.prices.salesPrice.value * item.quantity).toFixed(2)}€</span>
+                </div>
                 <button
                   onClick={() => removeFromCart(item.code)}
-                  className="bg-red-500 hover:bg-red-700 text-white py-1 px-3 rounded"
                 >
                   Remove
                 </button>
-              </li>
+              </div>
             ))}
           </ul>
+          <hr />
+          <div>
+            <div>
+              <p>Total</p>
+              <p>Summe ({totalQuantity} product{totalQuantity >= 2 ? 's' : ''})</p>
+            </div>
+            <p>{totalCost.toFixed(2)}€</p>
+          </div>
         </>
       )}
     </div>

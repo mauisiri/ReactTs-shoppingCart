@@ -4,8 +4,7 @@ This project is a code callenge of a responsive shopping cart application built 
 It demonstrates a dynamic product listing and a shopping cart component, where products can be added and removed from the cart.<br>  
 The application fetches product data from a local JSON file and updates the product list and total cost dynamically based on user interactions.<br> <br>
 
-Achieved requirements will be marked with the following icon: ✅
-Meawhile pending requirements or features will be marked with 🔨
+As a code callenge, a list of requirements need to be performed. To make it more visual, I have marked the ✅ **Achieved** and 🔨 **Pending** requirements with icons.
 
 ### **General Requirements:**
 
@@ -18,16 +17,16 @@ Meawhile pending requirements or features will be marked with 🔨
 
 The "Additional Points of Interest" are elements that we commonly review and value in our software development process. While they are not stringent requirements for this task, we may engage in further discussions or ask for explanations on these topics during later stages of the hiring process.
 
-- State management
-- Performance optimisation
-- A mobile-first development approach
-- Code simplicity and readability (SOLID principles)
-- Component design (We use Tailwind)
-- Error handling
-- Testing
-- Accessibility
-- Use of external libraries
-- Project setup
+✅ State management
+✅ Performance optimisation
+🔨 A mobile-first development approach
+✅ Code simplicity and readability (SOLID principles)
+✅ Component design
+🔨 Error handling
+✅ Testing
+🔨 Accessibility
+🔨 Use of external libraries
+🔨 Project setup
 
 ## Features
 **- Product Listing:** Displays a list of products fetched from a local JSON file. Users can add products to the cart until they are out of stock.<br> 

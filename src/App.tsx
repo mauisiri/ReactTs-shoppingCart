@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import ProductList from './components/ProductList/ProductList';
-import Cart from './components/Cart';
+import Cart from './components/Cart/Cart';
 import { Product } from './types/Product';
 import { fetchProducts } from './services/productService';
 import './index.css';
