@@ -1,3 +1,16 @@
+:root {
+  --light:white;
+  --dark:rgb(39, 38, 38);;
+  --primary: rgb(20, 71, 73);
+  --primaryLight: rgb(19, 141, 74);
+  --secondary: #1c1b1b;
+  --gray: #9c9c9c;
+  --darkGrey: #464D53;
+  --lightgray: #D9D9D9;
+
+
+}
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;

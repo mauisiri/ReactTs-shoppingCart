@@ -9,7 +9,7 @@
     "packagingSize": "2 x 14 St",
     "defaultSaleCondition": "OR",
     "baseprice": "0,07 €/St.",
-    "url": "/dextro-energy-dextrose-sport-tablets/14024547",
+    "url": "https://media.docmorris.de/produkte-pzn/14024547/dextro-energy-dextrose-sport-tablets/14024547",
     "available": true,
     "stock": -1,
     "categories": [
@@ -76,10 +76,11 @@
               "jpg": {
                 "resolutions": {
                   "1x": {
-                    "url": "https://media.docmorris.de/produkte-pzn/14024547/dextro-energy-dextrose-sport-tablets-2-x-14-st-14024547-default-90-1662679355.jpg"
+                    "url": "https://statics.promofarma.com/static/promofarma/prod/product_images/mr/4L7XQL_es_ES_0.png"
                   },
                   "2x": {
-                    "url": "https://media.docmorris.de/produkte-pzn/14024547/dextro-energy-dextrose-sport-tablets-2-x-14-st-14024547-default-90-1662679355@2x.jpg"
+                    "url": "https://statics.docmorris.de/static/produkte/FX5282EG/docmorris/ps300r/dextro-energy-dextrose-sport-tablets-2x14-st-14024547-0-1714046830855723.jpeg"
+
                   }
                 }
               },

@@ -1,7 +1,7 @@
 // src/App.tsx
 
 import React, { useState, useEffect } from 'react';
-import ProductList from './components/Product/ProductList';
+import ProductList from './components/ProductList/ProductList';
 import Cart from './components/Cart';
 import { Product } from './types/Product';
 import { fetchProducts } from './services/productService';
