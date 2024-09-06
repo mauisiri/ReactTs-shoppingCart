@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Cart.css';
 import { Product } from '../../types/Product';
 import bin from '../../assets/icons/bin.png';
 import noPic from '../../assets/not-available-pic.png';
+import Modal from 'react-modal';
 
 interface CartItem extends Product {
   quantity: number;
@@ -15,6 +16,9 @@ interface CartProps {
 }
 
 const Cart: React.FC<CartProps> = ({ cartItems, removeFromCart, updateQuantity }) => {
+  const [showModal, setShowModal] = useState(false);
+  const [productToRemove, setProductToRemove] = useState<string | null>(null);
+
   const totalCost = cartItems.reduce((total, item) => total + item.prices.salesPrice.value * item.quantity, 0);
   const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
 
@@ -30,6 +34,19 @@ const Cart: React.FC<CartProps> = ({ cartItems, removeFromCart, updateQuantity }
     if (item && item.quantity > 1) {
       updateQuantity(productCode, item.quantity - 1);
     }
+  };
+
+  const handleRemoveClick = (productCode: string) => {
+    setProductToRemove(productCode);
+    setShowModal(true);
+  };
+
+  const confirmRemove = () => {
+    if (productToRemove) {
+      removeFromCart(productToRemove);
+      setProductToRemove(null);
+    }
+    setShowModal(false);
   };
 
   return (
@@ -55,7 +72,7 @@ const Cart: React.FC<CartProps> = ({ cartItems, removeFromCart, updateQuantity }
                       {item.name}
                     </span>
                     <button
-                      onClick={() => removeFromCart(item.code)}
+                      onClick={() => handleRemoveClick(item.code)}
                       className='remove-item-button'
                     >
                       <img
@@ -91,6 +108,20 @@ const Cart: React.FC<CartProps> = ({ cartItems, removeFromCart, updateQuantity }
           </div>
         </>
       )}
+
+      {/* Modal */}
+      <Modal
+        isOpen={showModal}
+        onRequestClose={() => setShowModal(false)}
+        contentLabel="Confirm Remove"
+        className="modal"
+        overlayClassName="overlay"
+      >
+        <h2>Confirm Remove</h2>
+        <p>Are you sure you want to remove this product from the cart?</p>
+        <button onClick={() => setShowModal(false)}>Cancel</button>
+        <button onClick={confirmRemove}>Remove</button>
+      </Modal>
     </div>
   );
 };
