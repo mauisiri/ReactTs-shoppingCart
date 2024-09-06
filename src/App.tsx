@@ -70,6 +70,17 @@ const App: React.FC = () => {
         item.code === productCode ? { ...item, quantity } : item
       )
     );
+
+    setProducts((prevProducts) =>
+      prevProducts.map((p) => {
+        const itemInCart = cartItems.find((item) => item.code === productCode);
+        if (p.code === productCode && itemInCart) {
+          const stockChange = itemInCart.quantity - quantity;
+          return { ...p, stock: p.stock + stockChange };
+        }
+        return p;
+      })
+    );
   };
 
   return (
@@ -79,7 +90,7 @@ const App: React.FC = () => {
           <ProductList products={products} addToCart={addToCart} />
         </div>
         <div className="cart-container">
-          <Cart cartItems={cartItems} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />
+          <Cart cartItems={cartItems} removeFromCart={removeFromCart} updateQuantity={updateQuantity} products={products} />
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import './Cart.css';
 import { Product } from '../../types/Product';
 import bin from '../../assets/icons/bin.png';
 import noPic from '../../assets/not-available-pic.png';
-import DeletePopup from '../DeletePopup/DeletePopup';
+import DeletePopup from './DeletePopup/DeletePopup';
 
 interface CartItem extends Product {
   quantity: number;
@@ -13,9 +13,10 @@ interface CartProps {
   cartItems: CartItem[];
   removeFromCart: (productCode: string) => void;
   updateQuantity: (productCode: string, quantity: number) => void;
+  products: Product[];
 }
 
-const Cart: React.FC<CartProps> = ({ cartItems, removeFromCart, updateQuantity }) => {
+const Cart: React.FC<CartProps> = ({ cartItems, removeFromCart, updateQuantity, products }) => {
   const [showModal, setShowModal] = useState(false);
   const [productToRemove, setProductToRemove] = useState<string | null>(null);
 
@@ -57,47 +58,58 @@ const Cart: React.FC<CartProps> = ({ cartItems, removeFromCart, updateQuantity }
       ) : (
         <>
           <ul className='cart-items-list'>
-            {cartItems.map((item) => (
-              <div key={item.code} className='cart-item'>
-                <div className='cart-item-image'>
-                  <img
-                    src={item.images[0]?.variants['90'].formats.jpg.resolutions['1x'].url || noPic}
-                    alt={item.name}
-                    className="cart-product-image"
-                  />
-                </div>
-                <div className='cart-item-details-container'>
-                  <div className='cart-item-details'>
-                    <span className='cart-item-name'>
-                      {item.name}
-                    </span>
-                    <button
-                      onClick={() => handleRemoveClick(item.code)}
-                      className='remove-item-button'
-                    >
-                      <img
-                        src={bin}
-                        alt="Delete"
-                        className='remove-item-icon'
-                      />
-                    </button>
+            {cartItems.map((item) => {
+              const product = products.find(p => p.code === item.code);
+              const isOutOfStock = product ? product.stock <= 0 : false;
+
+              return (
+                <div key={item.code} className='cart-item'>
+                  <div className='cart-item-image'>
+                    <img
+                      src={item.images[0]?.variants['90'].formats.jpg.resolutions['1x'].url || noPic}
+                      alt={item.name}
+                      className="cart-product-image"
+                    />
                   </div>
-                  <div className='cart-item-details'>
-                    <div className='cart-item-quantity'>
+                  <div className='cart-item-details-container'>
+                    <div className='cart-item-details'>
+                      <span className='cart-item-name'>
+                        {item.name}
+                      </span>
                       <button
-                        onClick={() => handleDecrement(item.code)}
-                        className={`quantity-button ${item.quantity === 1 ? 'disabled' : ''}`}
+                        onClick={() => handleRemoveClick(item.code)}
+                        className='remove-item-button'
                       >
-                        -
+                        <img
+                          src={bin}
+                          alt="Delete"
+                          className='remove-item-icon'
+                        />
                       </button>
-                      <span>{item.quantity}</span>
-                      <button onClick={() => handleIncrement(item.code)} className='quantity-button'>+</button>
                     </div>
-                    <span className='cart-item-price'>{(item.prices.salesPrice.value * item.quantity).toFixed(2)}€</span>
+                    <div className='cart-item-details'>
+                      <div className='cart-item-quantity'>
+                        <button
+                          onClick={() => handleDecrement(item.code)}
+                          className={`quantity-button ${item.quantity === 1 ? 'disabled' : ''}`}
+                        >
+                          -
+                        </button>
+                        <span>{item.quantity}</span>
+                        <button
+                          onClick={() => handleIncrement(item.code)}
+                          className='quantity-button'
+                          disabled={isOutOfStock}
+                        >
+                          +
+                        </button>
+                      </div>
+                      <span className='cart-item-price'>{(item.prices.salesPrice.value * item.quantity).toFixed(2)}€</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </ul>
           <div className='cart-summary-details'>
             <h3>Total</h3>
