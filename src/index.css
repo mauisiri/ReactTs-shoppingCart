@@ -6,9 +6,9 @@
   --secondary: #1c1b1b;
   --gray: #9c9c9c;
   --darkGrey: #464D53;
-  --lightgray: #D9D9D9;
+  --lightgray: #D0D0D0;
 
-
+  --border-radius: 8px;
 }
 
 body {
@@ -22,4 +22,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--dark);
 }

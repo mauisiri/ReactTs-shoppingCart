@@ -18,7 +18,7 @@
   height: 400px;
   width: 200px;
   padding: 16px;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   overflow: hidden;
   position: relative;
 }
@@ -27,7 +27,7 @@
   display: flex;
   width: 200px;
   padding: 10px;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   position: relative;
 }
 
@@ -126,7 +126,7 @@
 .popup-content {
   background: white;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   width: 80%;
   max-width: 500px;
   position: relative;
