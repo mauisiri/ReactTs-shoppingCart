@@ -3,7 +3,7 @@ import './Cart.css';
 import { Product } from '../../types/Product';
 import bin from '../../assets/icons/bin.png';
 import noPic from '../../assets/not-available-pic.png';
-import Modal from 'react-modal';
+import DeletePopup from '../DeletePopup/DeletePopup';
 
 interface CartItem extends Product {
   quantity: number;
@@ -108,20 +108,7 @@ const Cart: React.FC<CartProps> = ({ cartItems, removeFromCart, updateQuantity }
           </div>
         </>
       )}
-
-      {/* Modal */}
-      <Modal
-        isOpen={showModal}
-        onRequestClose={() => setShowModal(false)}
-        contentLabel="Confirm Remove"
-        className="modal"
-        overlayClassName="overlay"
-      >
-        <h2>Confirm Remove</h2>
-        <p>Are you sure you want to remove this product from the cart?</p>
-        <button onClick={() => setShowModal(false)}>Cancel</button>
-        <button onClick={confirmRemove}>Remove</button>
-      </Modal>
+      <DeletePopup showModal={showModal} setShowModal={setShowModal} confirmRemove={confirmRemove} />
     </div>
   );
 };
