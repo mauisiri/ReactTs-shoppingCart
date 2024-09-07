@@ -21,7 +21,7 @@ As a code callenge, a list of requirements need to be performed. To make it more
 ✅ **- Code simplicity and readability:** SOLID principles used
 ✅ **- Component design**
 🔨 **- Error handling**
-🔨 **- Testing**
+✅ **- Testing**: React Testing Library and Jest
 🔨 **- Accessibility**
 ✅ **- Use of external libraries:** react-modal
 ✅ **- Project setup**

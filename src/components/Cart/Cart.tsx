@@ -16,6 +16,8 @@ interface CartProps {
   products: Product[];
 }
 
+
+
 const Cart: React.FC<CartProps> = ({ cartItems, removeFromCart, updateQuantity, products }) => {
   const [showModal, setShowModal] = useState(false);
   const [productToRemove, setProductToRemove] = useState<string | null>(null);
