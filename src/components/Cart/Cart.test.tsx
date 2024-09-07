@@ -3,7 +3,6 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import Cart from './Cart';
 import { Product } from '../../types/Product';
 
-
 const mockProduct: Product = {
   code: '123',
   name: 'Test Product',
@@ -61,7 +60,6 @@ describe('Cart Component', () => {
     expect(screen.getByText(/Your cart is empty/i)).toBeInTheDocument();
   });
 
-
   test('increments item quantity when "+" button is clicked', () => {
     const { mockUpdateQuantity } = setup();
     const incrementButton = screen.getByText('+');
@@ -84,10 +82,18 @@ describe('Cart Component', () => {
     expect(mockUpdateQuantity).not.toHaveBeenCalled();
   });
 
-  test('opens delete confirmation modal when delete button is clicked', () => {
+  test('displays total cost and quantity correctly', () => {
     setup();
-    const deleteButton = screen.getByAltText(/Delete/i);
-    fireEvent.click(deleteButton);
-    expect(screen.getByText(/Are you sure/i)).toBeInTheDocument();
+    const totalCost = (mockCartItem.prices.salesPrice.value * mockCartItem.quantity).toFixed(2);
+    expect(screen.getByText(`Summe (2 products)`)).toBeInTheDocument();
+    expect(screen.getByText(`${totalCost}€`, { selector: '.cart-total-cost' })).toBeInTheDocument();
+  });
+  
+
+  test('renders items in the cart correctly', () => {
+    setup();
+    expect(screen.getByText(mockCartItem.name)).toBeInTheDocument();
+    expect(screen.getByText(`${(mockCartItem.prices.salesPrice.value * mockCartItem.quantity).toFixed(2)}€`, { selector: '.cart-item-price' })).toBeInTheDocument();
+    expect(screen.getByText(`${mockCartItem.quantity}`)).toBeInTheDocument();
   });
 });
