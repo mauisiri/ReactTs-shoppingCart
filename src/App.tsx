@@ -99,7 +99,7 @@ const App: React.FC = () => {
           <Cart cartItems={cartItems} removeFromCart={removeFromCart} updateQuantity={updateQuantity} products={products} />
         </div>
       </div>
-      <Footer cartItemsCount={cartItems.length} onToggleCart={handleToggleCart} />
+      <Footer cartItemsCount={cartItems.length} onToggleCart={handleToggleCart} isCartVisible={isCartVisible} />
     </div>
   );
 };
