@@ -48,6 +48,7 @@ const ProductList: React.FC<ProductListProps> = ({ products, addToCart }) => {
 
           return (
             <div key={product.code} className="product-card">
+              <div></div>
               <img 
                 src={plichtangaber} 
                 alt="Plichtangaber" 
