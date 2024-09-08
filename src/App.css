@@ -36,9 +36,11 @@
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.1); /* Sombra uniforme */
 }
 
+.cart-container.visible {
+    display: block;
+}
 
 @media (max-width: 900px) {
-
     .cart-container {
         display: none;
     }

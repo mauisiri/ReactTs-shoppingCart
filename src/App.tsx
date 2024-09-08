@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProductList from './components/ProductList/ProductList';
 import Cart from './components/Cart/Cart';
+import Footer from './components/Footer/Footer';
 import { Product } from './types/Product';
 import { fetchProducts } from './services/productService';
 import './index.css';
@@ -13,6 +14,7 @@ interface CartItem extends Product {
 const App: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [isCartVisible, setIsCartVisible] = useState<boolean>(false);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -83,16 +85,21 @@ const App: React.FC = () => {
     );
   };
 
+  const handleToggleCart = () => {
+    setIsCartVisible(!isCartVisible);
+  };
+
   return (
     <div className='app-container'>
       <div className="product-container">
         <div className="items-container">
           <ProductList products={products} addToCart={addToCart} />
         </div>
-        <div className="cart-container">
+        <div className={`cart-container ${isCartVisible ? 'visible' : ''}`}>
           <Cart cartItems={cartItems} removeFromCart={removeFromCart} updateQuantity={updateQuantity} products={products} />
         </div>
       </div>
+      <Footer cartItemsCount={cartItems.length} onToggleCart={handleToggleCart} />
     </div>
   );
 };
