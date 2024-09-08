@@ -1,97 +1,84 @@
-Shopping Cart Feature
-Overview
-This project is a simple shopping cart application built using React and TypeScript. It demonstrates a dynamic product listing and a shopping cart component, where products can be added and removed from the cart. The application fetches product data from a local JSON file and updates the product list and total cost dynamically based on user interactions.
+# Shopping Cart Feature:
+## Overview
+This project is a code callenge of a responsive shopping cart application built using React and TypeScript.<br>  
+It demonstrates a dynamic product listing and a shopping cart component, where products can be added and removed from the cart.<br>  
+The application fetches product data from a local JSON file and updates the product list and total cost dynamically based on user interactions.<br> <br>
 
-Features
-Product Listing: Displays a list of products fetched from a local JSON file. Users can add products to the cart until they are out of stock.
-Shopping Cart: Displays products added to the cart, the total quantity of items, and the total cost. Users can remove products from the cart.
-Responsive Design: On mobile screens, the cart is displayed as a sticky section at the bottom, showing only the total cost and quantity of items.
-TypeScript Support: The project is fully typed using TypeScript for better code quality and maintainability.
-Testing: Includes unit tests for key functionalities to ensure the application works as expected.
-Technologies Used
-React: A JavaScript library for building user interfaces.
-TypeScript: A typed superset of JavaScript that compiles to plain JavaScript.
-Tailwind CSS: A utility-first CSS framework for rapid UI development.
-Jest and React Testing Library: Used for writing and running unit tests.
-Installation
+As a code callenge, a list of requirements need to be performed. To make it more visual, I have marked the ✅ **Achieved** and 🔨 **Pending/in progress** requirements with icons.
+
+### **General Requirements:**
+
+✅ The codebase should be written in TypeScript and follow a modular approach.<br> 
+🔨 Each component must have accompanying unit tests.<br> 
+✅ Efficient and mindful resource use and performance optimisation.<br> 
+✅ Prioritise functionality over aesthetic precision.<br> 
+
+### **Additional Points of Interest:**
+
+✅ **- State management:** use of hooks
+✅ **- Performance optimisation:** popups added
+✅ **- A mobile-first development approach**
+✅ **- Code simplicity and readability:** SOLID principles used
+✅ **- Component design**
+🔨 **- Error handling**
+✅ **- Testing**: React Testing Library and Jest
+🔨 **- Accessibility**
+✅ **- Use of external libraries:** react-modal
+✅ **- Project setup**
+
+### Features
+✅**- Product Listing:** Displays a list of products fetched from a local JSON file. Users can add products to the cart until they are out of stock.<br> 
+✅**- Shopping Cart:** Displays products added to the cart, the total quantity of items, and the total cost. Users can remove products from the cart.<br> 
+✅**- Responsive Design:** On mobile screens, the cart is displayed as a sticky section at the bottom, showing only the total cost and quantity of items.<br> 
+✅**- TypeScript Support:** The project is fully typed using TypeScript for better code quality and maintainability.<br> 
+✅**- Testing:** Includes unit tests for key functionalities to ensure the application works as expected.<br> <br> 
+
+##Technologies Used
+**React:** A JavaScript library for building user interfaces.<br> 
+**TypeScript: A typed superset of JavaScript that compiles to plain JavaScript.<br> 
+**Jest and React Testing Library: Used for writing and running unit tests.<br> <br> 
+
+##Installation
 Follow these steps to get a local copy of the project up and running:
 
-Clone the repository:
+### Clone the repository:
 
-bash
-Copiar código
+1. Open your bash and navigate to the location where you want to create your project and execute:<br> 
 git clone https://github.com/your-username/shopping-cart.git
-Navigate into the project directory:
 
-bash
-Copiar código
+2. Navigate into the project directory:<br> 
 cd shopping-cart
-Install the dependencies:
 
-bash
-Copiar código
+3. Install the dependencies executing:<br> 
 npm install
-Usage
-To start the application locally, run:
 
-bash
-Copiar código
+4. Run the project:<br> 
 npm start
-This command will run the app in development mode. Open http://localhost:3000 to view it in your browser.
+<br> 
+This command will run the app in development mode. Open http://localhost:3000 to view it in your browser.<br> 
 
 The page will automatically reload if you make edits. You will also see any lint errors in the console.
 
-Project Structure
-csharp
-Copiar código
-shopping-cart/
-├── public/
-│   └── products.json          # Mock API data
-├── src/
-│   ├── components/            # React components
-│   │   ├── Cart.tsx
-│   │   └── ProductList.tsx
-│   ├── services/
-│   │   └── productService.ts  # API call service
-│   ├── types/
-│   │   └── Product.ts         # TypeScript types
-│   ├── App.tsx                # Main application component
-│   ├── App.test.tsx           # Unit tests
-│   └── index.tsx              # Entry point
-├── tailwind.config.js         # Tailwind CSS configuration
-└── package.json
-API
-The application uses a mock API to fetch product data from a JSON file. The products.json file is located in the public directory and contains an array of product objects:
-
-json
-Copiar código
-[
-  {
-    "id": 1,
-    "name": "Product 1",
-    "price": 20,
-    "stock": 10
-  },
-  {
-    "id": 2,
-    "name": "Product 2",
-    "price": 30,
-    "stock": 5
-  }
-]
-Testing
-To run the unit tests, use the following command:
-
-bash
-Copiar código
+5. Run the tests:<br> 
 npm test
+<br> 
+
+
+### API
+The application uses a mock API to fetch product data from a JSON file. The products.json file is located in the public directory and contains an array of product objects.
+
+### Testing
+To run the unit tests, use the following command:<br> 
+npm test<br> 
 This command will run Jest in watch mode and execute all test files matching the *.test.tsx pattern.
 
-Contributing
+### Contributing
 Contributions are welcome! If you have any suggestions or improvements, please feel free to submit a pull request.
 
-License
+### License
 This project is open-source and available under the MIT License.
 
-Contact
-For questions or feedback, feel free to contact your-email@example.com.
+### Contact
+For questions or feedback, feel free to contact me:<br>
+[ ℹ️ on LinkedIn](https://www.linkedin.com/in/irisleo/)<br>
+📧 **by mail**: [  irisleo.com@gmail.com](mailto:irisleo.com@egmail.com)
