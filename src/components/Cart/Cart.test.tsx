@@ -96,10 +96,4 @@ describe('Cart Component', () => {
     expect(screen.getByText(`${(mockCartItem.prices.salesPrice.value * mockCartItem.quantity).toFixed(2)}€`, { selector: '.cart-item-price' })).toBeInTheDocument();
     expect(screen.getByText(`${mockCartItem.quantity}`)).toBeInTheDocument();
   });
-
-  //  // Failing test
-  //  test('fails to find a non-existent element', () => {
-  //   setup();
-  //   expect(screen.getByText(/Non-existent element/i)).toBeInTheDocument();
-  // });
 });

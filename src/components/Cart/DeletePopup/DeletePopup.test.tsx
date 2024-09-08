@@ -39,4 +39,10 @@ describe('DeletePopup Component', () => {
     fireEvent.click(cancelButton);
     expect(setShowModal).toHaveBeenCalledWith(false);
   });
+  
+  //  // Failing test
+  //  test('fails to find a non-existent element', () => {
+  //   setup();
+  //   expect(screen.getByText(/Non-existent element/i)).toBeInTheDocument();
+  // });
 });
