@@ -37,13 +37,14 @@ To highlight progress, the following icons are used: ✅ **Achieved** and 🔨 *
 ## Mockup
 A mockup has been provided through Figma, a collaborative design tool for building meaningful products. Check the online design by clicking [here](https://www.figma.com/design/L0q8d0GTEpfV1pt2qSFLsH/Mockup?node-id=1-13494&node-type=FRAME&t=B3E34bAKFSE7LHxa-0)<br>
 
-Desktop Design<br>
+### Desktop Design
 ![desktop design](src/assets/README-pics/desktop-ProductList-and-cart.png)
 
-Mobile Product List Design<br>
+
+### Mobile Product List Design<br>
 ![Mobile product list design](src/assets/README-pics/mobile-ProductList.png)
 
-Mobile Cart Design<br>
+### Mobile Cart Design<br>
 ![Mobile cart design](src/assets/README-pics/mobile-cart.png)
 
 ## Technologies Used

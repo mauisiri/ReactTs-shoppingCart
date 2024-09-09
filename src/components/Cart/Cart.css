@@ -169,6 +169,10 @@
         margin-bottom: 0;
     }
 
+    .added-to-cart-message {
+        justify-content: center
+    }
+
     .cart-container {
         display: block;
         position: fixed;
@@ -184,8 +188,9 @@
     }
 
     .cart-item {
-        width: 100%;
+        width: 100%;   
     }
+    
     .cart-item-details {
         width: 100%;
         justify-content: space-between; 

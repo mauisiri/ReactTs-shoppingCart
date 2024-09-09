@@ -33,7 +33,7 @@
     border-radius: var(--border-radius);
     overflow-y: auto;
     margin: 3rem;
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1); /* Sombra uniforme */
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
 }
 
 .cart-container.visible {

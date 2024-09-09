@@ -17,7 +17,7 @@ const ProductList: React.FC<ProductListProps> = ({ products, addToCart }) => {
   const [favouritedProducts, setFavouritedProducts] = useState<Set<string>>(new Set());
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null); 
   const [isPopupVisible, setIsPopupVisible] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null); // State to track errors
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const toggleFavourite = (productCode: string) => {
     setFavouritedProducts((prevFavourites) => {
@@ -56,10 +56,9 @@ const ProductList: React.FC<ProductListProps> = ({ products, addToCart }) => {
 
       <div className="productList-view">
         {products.map((product) => {
-          // Check for missing critical fields (name, stock, and prices)
           if (!product.name || product.stock === undefined || !product.prices || !product.prices.salesPrice) {
             console.warn(`Invalid product data for product code: ${product.code}`);
-            return null; // Skip rendering this product if critical data is missing
+            return null;
           }
 
           const isFavourited = favouritedProducts.has(product.code);
