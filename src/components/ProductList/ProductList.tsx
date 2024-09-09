@@ -17,6 +17,7 @@ const ProductList: React.FC<ProductListProps> = ({ products, addToCart }) => {
   const [favouritedProducts, setFavouritedProducts] = useState<Set<string>>(new Set());
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null); 
   const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const toggleFavourite = (productCode: string) => {
     setFavouritedProducts((prevFavourites) => {
@@ -40,35 +41,53 @@ const ProductList: React.FC<ProductListProps> = ({ products, addToCart }) => {
     setIsPopupVisible(false);
   };
 
+  const handleAddToCart = (product: Product) => {
+    try {
+      addToCart(product);
+    } catch (error) {
+      console.error('Error adding product to cart:', error);
+      setErrorMessage('Failed to add product to cart. Please try again.');
+    }
+  };
+
   return (
     <div className="productList-container">
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
+
       <div className="productList-view">
         {products.map((product) => {
+          if (!product.name || product.stock === undefined || !product.prices || !product.prices.salesPrice) {
+            console.warn(`Invalid product data for product code: ${product.code}`);
+            return null;
+          }
+
           const isFavourited = favouritedProducts.has(product.code);
 
           return (
             <div key={product.code} className="product-card">
-              <div></div>
-              <img 
-                src={plichtangaber} 
-                alt="Plichtangaber" 
-                className="plichtangaber"
+              <div>
+                <img 
+                  src={plichtangaber} 
+                  alt="Plichtangaber" 
+                  className="plichtangaber"
                 />
-              <div className="product-image-container" onClick={() => openPopup(product)}>
-                <img
-                  src={product.images[0]?.variants['90'].formats.jpg.resolutions['1x'].url || noPic}
-                  alt={product.name}
-                  className="product-image"
-                />
-                <img
-                  src={isFavourited ? favouritedIcon : favouriteIcon}
-                  alt="Favourite Icon"
-                  className="favourite-icon"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    toggleFavourite(product.code);
-                  }}
-                />
+                <div className="product-image-container" onClick={() => openPopup(product)}>
+                  <img
+                    src={product.images[0]?.variants['90'].formats.jpg.resolutions['1x'].url || noPic}
+                    alt={product.name}
+                    className="product-image"
+                    onError={(e) => (e.currentTarget.src = noPic)}
+                  />
+                  <img
+                    src={isFavourited ? favouritedIcon : favouriteIcon}
+                    alt="Favourite Icon"
+                    className="favourite-icon"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleFavourite(product.code);
+                    }}
+                  />
+                </div>
               </div>
               <div className='product-data'>
                 <h2 className="product-name" onClick={() => openPopup(product)}>
@@ -81,7 +100,7 @@ const ProductList: React.FC<ProductListProps> = ({ products, addToCart }) => {
 
               <div className="add-to-cart-button-container">
                 <button
-                  onClick={() => addToCart(product)}
+                  onClick={() => handleAddToCart(product)}
                   disabled={product.stock <= 0}
                   className={`add-to-cart-button ${product.stock <= 0 ? 'disabled' : ''}`}
                 >
